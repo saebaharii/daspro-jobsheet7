@@ -1,46 +1,29 @@
-package week7;
-
 import java.util.Scanner;
 
-public class studikasus2 {
+public class siakadfor26 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String namaMahasiswa, jenisKegiatan;
-        int lolosPendanaan;
-        int jumlahDokumen;
-        int jumlahDokumenKurang = 0;
+        double nilai, tertinggi=0, terendah=100;
+        int lulus=0, tidakLulus=0;
 
-        System.out.print("Nama mahasiswa: ");
-        namaMahasiswa = sc.nextLine();
-        System.out.print("Jenis kegiatan (BELMAWA/BAKORMA/MANDIRI/PKM/LAINNYA): ");
-        jenisKegiatan = sc.nextLine();
-        if (jenisKegiatan.equalsIgnoreCase("BELMAWA") || jenisKegiatan.equalsIgnoreCase("BAKORMA") || jenisKegiatan.equalsIgnoreCase("MANDIRI")) {
-            System.out.print("Peringkat juara : ");
-            int peringkatJuara = sc.nextInt();
-            if (peringkatJuara > 0 && peringkatJuara <= 3) {
-                System.out.print("Jumlah dokumen: ");
-                jumlahDokumen = sc.nextInt();
-                    if (jumlahDokumen < 4 ){
-                        jumlahDokumenKurang = 4 - jumlahDokumen;
-                        System.out.println("Status : Dokumen tidak lengkap (kurang " + jumlahDokumenKurang + " dokumen). Dana penghargaan tidak diberikan.");
-                    } else {
-                        System.out.println("Status : Dokumen lengkap. Dana penghargaan diberikan.");
-                    }
-            } else{
-                System.out.println("Status : Tidak mendapat juara, dana penghargaan tidak diberikan");
+        for (int i=1; i<=10; i++){
+            System.out.print("Masukkan nilai mahasiswa ke-"+i+ ": ");
+            nilai = sc.nextDouble();
+            if (nilai > tertinggi){
+                tertinggi = nilai;
             }
-        } else if (jenisKegiatan.equalsIgnoreCase("PKM")) {
-            System.out.print("Apakah lolos pendanaan? (1/0): ");
-            lolosPendanaan = sc.nextInt(); 
-            if (lolosPendanaan == 1) {
-                System.out.println("Status : Lolos pendanaan. Dana penghargaan diberikan.");
-            } else if (lolosPendanaan == 0) {
-                System.out.println("Status : Tidak lolos pendanaan. Dana penghargaan tidak diberikan.");
+            if (nilai < terendah){
+                terendah = nilai;
+            }
+            if (nilai >= 60){
+                lulus++;
             } else {
-                System.out.println("Status : Input tidak valid. Dana penghargaan tidak diberikan."); 
+                tidakLulus++;
             }
-        } else {
-            System.out.println("Status : Jenis kegiatan tidak memenuhi syarat. Dana penghargaan tidak diberikan.");
         }
+        System.out.println("Nilai tertinggi: " +tertinggi);
+        System.out.println("Nilai terendah: "+terendah);
+        System.out.println("Jumlah mahasiswa lulus: "+lulus);
+        System.out.println("Jumlah mahasiswa tidak lulus: "+tidakLulus);
     }
 }
